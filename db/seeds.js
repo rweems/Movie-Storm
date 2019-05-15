@@ -15,6 +15,6 @@ Movie.deleteMany().then(() =>{
     const petSemetary = new Movie({title:'Pet Semetary',director:'Kevin Kolsch',genre:'Horror',releaseDate:new Date('April 05, 2019')})
     return petSemetary.save()
 }).then(()=> {
-    const longShot = new Movie({title:'Long Shot',director:'Jonathan Levine',genre:'Comedy',releaseDate: new Date('March 09, 2019')})
+    const longShot = new Movie({title:'Long Shot',director:'Jonathan Levine',genre:'Comedy',releaseDate: new Date('May 03, 2019')})
     return longShot.save()
 })

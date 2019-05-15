@@ -1,6 +1,6 @@
 require("dotenv").config()
 const express = require('express')
-
+const bodyParser = require('body-parser')
 const app = express()
 
 app.use(express.urlencoded({ extended: true }));
@@ -11,11 +11,13 @@ app.use(express.static(`${__dirname}/client/build`))
 app.get('/', (req, res) => {
   res.sendFile(`${__dirname}/client/build/index.html`)
 })
+app.use(bodyParser.json())
 
 app.get('/' ,(req,res) =>
 {
     res.send('Hello from Movie Storm')
 })
+
 
 const PORT = process.env.PORT || 3000
 
