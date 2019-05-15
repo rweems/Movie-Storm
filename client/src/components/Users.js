@@ -68,7 +68,11 @@ class Users extends Component {
                                 value={this.state.newUser.name} />
                         </div>
                         <div>
-                            <label htmlFor='name'>Email: </label>
+                            <label htmlFor='memberSince'>Date: </label>
+                            <input id='memberSince' type='date' name='memberSince' />
+                        </div>
+                        <div>
+                            <label htmlFor='email'>Email: </label>
                             <input id='email' type='text'
                                 name='email'
                                 placeholder='Email'
