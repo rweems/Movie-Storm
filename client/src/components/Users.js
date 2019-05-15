@@ -12,6 +12,13 @@ class Users extends Component {
 
     }
 
+    handleChange =(e) => {
+        const createdUser = {...this.state.newUser}
+        createdUser[e.target.name] = e.target.value
+        this.setState({newUser:createdUser})
+        console.log(createdUser)
+    }
+
     render() {
         return (
             <div>
@@ -31,7 +38,7 @@ class Users extends Component {
                 {
                     <form onSubmit={this.createUser}>
                         <div>
-                            <label for='name'>Name: </label>
+                            <label htmlFor='name'>Name: </label>
                             <input id='name' type='text'
                                 name='name'
                                 placeholder='Name'
@@ -39,7 +46,7 @@ class Users extends Component {
                                 value={this.state.newUser.name} />
                         </div>
                         <div>
-                            <label for='name'>Email: </label>
+                            <label htmlFor='name'>Email: </label>
                             <input id='email' type='text'
                                 name='email'
                                 placeholder='Email'
