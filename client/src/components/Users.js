@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 class Users extends Component {
     state = {
@@ -12,11 +13,32 @@ class Users extends Component {
 
     }
 
-    handleChange =(e) => {
-        const createdUser = {...this.state.newUser}
+
+    handleChange = (e) => {
+        const createdUser = { ...this.state.newUser }
         createdUser[e.target.name] = e.target.value
-        this.setState({newUser:createdUser})
+        this.setState({ newUser: createdUser })
         console.log(createdUser)
+    }
+
+    createUser = (e) => {
+        e.preventDefault()
+        axios.post('/', {
+            name: this.state.newUser.name,
+            memberSince: this.state.newUser.memberSince,
+            email: this.state.newUser.email
+        }).then(res => {
+            const userList = [...this.state.users]
+            userList.push(res.data)
+            this.setState({
+                newUser: {
+                    name: '',
+                    memberSince: '',
+                    email: ''
+                },
+                users: userList
+            });
+        })
     }
 
     render() {
