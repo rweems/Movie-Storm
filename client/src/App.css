@@ -1,5 +1,7 @@
 .App {
-  text-align: center;
+  margin: 0 90px;
+  background-color: #90AFC5;
+  height: 100vh;
 }
 
 .App-logo {
@@ -22,16 +24,34 @@
 .App-link {
   color: #61dafb;
 }
+.text {
+  display: flex;
+  flex-flow: column;
+  flex-wrap: wrap;
+}
 h1{
-  text-align: center
+  text-align: center;
+  color:#2A3132;
 }
 
-form, h3, p{
+.form, form, h3, p{
   padding: 0px 20px;
 }
+h3, form {
+  color:#763626;
+}
+
+span {
+  padding-left: 50px;
+}
+
 header {
   padding:20px 30px;
   text-decoration: none;
+  background-color:#2A3132;
+}
+.form {
+  padding-top: 30px;
 }
 
 @keyframes App-logo-spin {
