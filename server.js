@@ -9,11 +9,8 @@ app.use(express.json());
 
 app.use(express.static(`${__dirname}/client/build`))
 
+//app.use('api/v1', routes)
 
-
-app.get('/', (req, res) => {
-  res.sendFile(`${__dirname}/client/build/index.html`)
-})
 app.use(bodyParser.json())
 
 app.get('/' ,(req,res) =>
@@ -21,6 +18,9 @@ app.get('/' ,(req,res) =>
     res.send('Hello from Movie Storm')
 })
 
+app.get('/*', (req, res) => {
+  res.sendFile(`${__dirname}/client/build/index.html`)
+})
 
 const PORT = process.env.PORT || 3000
 
