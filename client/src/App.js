@@ -11,10 +11,10 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div className='App'>
           <header>
-            <Link to='/' style={{ textDecoration: 'none', color:'black', paddingRight:'5px' }}>Home</Link> | 
-            <Link to='/about' style={{ textDecoration: 'none', color:'black', paddingLeft:'10px'}}>About</Link>
+            <Link to='/' style={{ textDecoration: 'none', color:'#336B87', paddingRight:'5px', fontWeight:'bold', fontSize:'20px'}}>Home</Link> | 
+            <Link to='/about' style={{ textDecoration: 'none', color:'#336B87', paddingLeft:'10px', fontWeight:'bold', fontSize:'20px'}}>About</Link>
           </header>
           <Switch>
             <Route exact path='/' component={Users} />
