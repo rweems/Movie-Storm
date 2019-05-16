@@ -11,8 +11,7 @@ class Users extends Component {
             email: ''
         }
 
-    }
-
+    }   
 
     handleChange = (e) => {
         const createdUser = { ...this.state.newUser }
@@ -37,7 +36,7 @@ class Users extends Component {
                     email: ''
                 },
                 users: userList
-            });
+            })
         })
     }
 
@@ -79,13 +78,14 @@ class Users extends Component {
                                 onChange={this.handleChange}
                                 value={this.state.newUser.email} />
                         </div>
+                        <br />
                         <div>
                             <input type='submit' value='Submit' />
                         </div>
                     </form>
                 }
             </div>
-        );
+        )
     }
 }
 
