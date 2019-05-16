@@ -18,9 +18,9 @@ class App extends Component {
           </header>
           <Switch>
             <Route exact path='/' component={Users} />
-            <Route path='/about' component={About} />
-            <Route path='/:id' component={User} />
-            <Route path='/:id/movie/:movieId' component={Movie} />
+            <Route exact path='/about' component={About} />
+            <Route exact path='/:id' component={User} />
+            <Route exact path='/:id/movie/:movieId' component={Movie} />
           </Switch>
         </div>
       </Router>
