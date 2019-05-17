@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Movies from './Movies'
+import UpdateUser from './UpdateUser.js'
 import axios from 'axios'
 
 class User extends Component {
@@ -9,7 +10,14 @@ class User extends Component {
             name: '',
             memberSince: '',
             email: ''
-        }
+        },
+        isFormDisplayed: false
+    }
+
+    toggleForm = () => {
+        this.setState((state, props) => {
+            return ({ isFormDisplayed: !state.isFormDisplayed })
+        })
     }
 
     handleChange = (e) => {
@@ -35,36 +43,19 @@ class User extends Component {
     render() {
         return (
             <div>
-                <h1>User{this.props.name}</h1>
+
                 <Movies />
+
                 <br />
-                <br />
-                <h2>Update User</h2>
-                <form onSubmit={this.updateUser}>
-                    <div>
-                        <label htmlFor='name'>Name: </label>
-                        <input id='name' type='text'
-                            name='name' onChange={this.handleChange}
-                            value={this.state.user.name}
-                            placeholder='Name' />
-                    </div>
-                    <div>
-                        <label htmlFor='memberSince'>Date: </label>
-                        <input id='memberSince' type='date' name='memberSince'
-                            onChange={this.handleChange}
-                            value={this.state.user.memberSince} />
-                    </div>
-                    <div>
-                        <label htmlFor='email'>Email: </label>
-                        <input id='email' type='text'
-                            name='email'
-                            placeholder='Email'
-                            onChange={this.handleChange}
-                            value={this.state.user.email} />
-                    </div>
-                    <br />
-                    <button>Update</button>
-                </form>
+                
+                <button onClick={this.toggleForm} className="buttonClass">Update User</button>
+                {
+                    this.state.isFormDisplayed
+                        ?
+                        <UpdateUser user={this.state.user} handleChange={this.handleChange} updateUser={this.state.updateUser} />
+                        : null
+                }
+
                 <div className='form'>
                     <div>
                         Name:{this.state.user.name}

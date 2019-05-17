@@ -9,12 +9,19 @@ class Users extends Component {
             name: '',
             memberSince: '',
             email: ''
-        }
+        },
+        isFormDisplayed: false
     }
 
     componentDidMount = () => {
         axios.get('/user').then(res => {
             this.setState({ users: res.data });
+        })
+    }
+
+    toggleForm = () => {
+        this.setState((state, props) => {
+            return ({ isFormDisplayed: !state.isFormDisplayed })
         })
     }
 
@@ -41,6 +48,7 @@ class Users extends Component {
                         memberSince: '',
                         email: ''
                     },
+                    isFormDisplayed:false,
                     users: userList
                 })
             })
@@ -61,8 +69,15 @@ class Users extends Component {
                         )
                     })
                 }
-                <h3>Add User</h3>
-                <AddUser newUser={this.state.newUser} handleChange={this.handleChange} createUser ={this.createUser}g/>
+
+                <button onClick={this.toggleForm} className="buttonClass">New User</button>
+                {
+                    this.state.isFormDisplayed
+                        ?
+                        <AddUser newUser={this.state.newUser} handleChange={this.handleChange} createUser={this.createUser} />
+                        : null
+                }
+
             </div>
         )
     }
