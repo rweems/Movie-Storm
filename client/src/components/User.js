@@ -47,7 +47,7 @@ class User extends Component {
                         <label htmlFor='memberSince'>Date: </label>
                         <input id='memberSince' type='date' name='memberSince'
                             onChange={this.handleChange}
-                            value={this.state.newUser.memberSince} />
+                            value={this.state.user.memberSince} />
                     </div>
                     <div>
                         <label htmlFor='email'>Email: </label>
