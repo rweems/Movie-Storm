@@ -68,7 +68,9 @@ class Users extends Component {
                         </div>
                         <div>
                             <label htmlFor='memberSince'>Date: </label>
-                            <input id='memberSince' type='date' name='memberSince' />
+                            <input id='memberSince' type='date' name='memberSince' 
+                                onChange={this.handleChange}
+                                value={this.state.newUser.memberSince}/>
                         </div>
                         <div>
                             <label htmlFor='email'>Email: </label>

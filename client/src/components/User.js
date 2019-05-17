@@ -12,9 +12,9 @@ class User extends Component {
     }
 
     handleChange = (e) => {
-        const _user = {...this.state.user}
+        const _user = { ...this.state.user }
         _user[e.target.name] = e.target.value
-        this.setState({user: _user})
+        this.setState({ user: _user })
     }
 
     updateUser = (e) => {
@@ -23,11 +23,11 @@ class User extends Component {
             name: this.state.user.name,
             email: this.state.user.email
         }).then(res => {
-            this.setState({user:res.data})
+            this.setState({ user: res.data })
         })
     }
     deleteUser = () => {
-        axios.delete(`/${this.props.match.params.id}`).then(res=> {
+        axios.delete(`/${this.props.match.params.id}`).then(res => {
             res.Redirect('/')
         })
     }
@@ -40,13 +40,15 @@ class User extends Component {
                         <label htmlFor='name'>Name: </label>
                         <input id='name' type='text'
                             name='name' onChange={this.handleChange}
-                            value={this.state.user.name} 
+                            value={this.state.user.name}
                             placeholder='Name' />
                     </div>
                     <div>
-                            <label htmlFor='memberSince'>Date: </label>
-                            <input id='memberSince' type='date' name='memberSince' />
-                        </div>
+                        <label htmlFor='memberSince'>Date: </label>
+                        <input id='memberSince' type='date' name='memberSince'
+                            onChange={this.handleChange}
+                            value={this.state.newUser.memberSince} />
+                    </div>
                     <div>
                         <label htmlFor='email'>Email: </label>
                         <input id='email' type='text'
@@ -75,7 +77,7 @@ class User extends Component {
                 <br />
                 <br />
 
-                
+
             </div>
         );
     }
