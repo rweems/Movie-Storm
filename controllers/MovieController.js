@@ -16,25 +16,21 @@ const MovieController = {
         User.create(newMovie)
          .then(() => {
              res.redirect('/') //go to userId
-         }).catch(err => {
-             console.log(err);
-             
-         })
+         }).catch(err => console.log(err))
      },
      update:(req,res) => {
          User.findByIdAndUpdate(req.params.id,req.body,{new: true})
          .then(() => {
              res.redirect(`/movie/${req.params.id}`)// go to userId
-         }).catch(err => { console.log(err) })
+         }).catch(err => console.log(err))
      },
      delete: (req,res)=>{
          User.findByIdAndRemove(req.params.id)
          .then(()=> {
              res.redirect('/') // go to userId
-         }).catch(err => {
-             console.log(err);
+         }).catch(err => console.log(err)
              
-         })
+         )
      }
 }
 
