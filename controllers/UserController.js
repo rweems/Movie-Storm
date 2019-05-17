@@ -2,9 +2,8 @@ const User = require('../models/User.js')
 
 const UserController = {
     index: (req, res) => {
-        User.find({}).then((users) => {
-            console.log(users)
-            res.send(users)
+        User.find().then((users) => {
+            res.json(users)
         }).catch(err => { console.log(err) })
     },
     show: (req, res) => {
@@ -14,10 +13,10 @@ const UserController = {
             }).catch(err => { console.log(err) })
     },
     create: (req, res) => {
-       const newUser = req.body
-       User.create(newUser)
-        .then(() => {
-            res.redirect('/')
+       
+       User.create(req.body)
+        .then((newUser) => {
+            res.json(newUser)
         }).catch(err => {
             console.log(err);
             
@@ -25,8 +24,8 @@ const UserController = {
     },
     update:(req,res) => {
         User.findByIdAndUpdate(req.params.id,req.body,{new: true})
-        .then(() => {
-            res.redirect(`/${req.params.id}`)
+        .then((updatedUser) => {
+            res.json(updatedUser)
         }).catch(err => { console.log(err) })
     },
     delete: (req,res)=>{

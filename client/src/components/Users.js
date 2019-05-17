@@ -10,34 +10,40 @@ class Users extends Component {
             memberSince: '',
             email: ''
         }
+    }
 
-    }   
+    componentDidMount = () => {
+        axios.get('/user').then(res => {
+            this.setState({ users: res.data });
+        })
+    }
 
     handleChange = (e) => {
         const createdUser = { ...this.state.newUser }
         createdUser[e.target.name] = e.target.value
         this.setState({ newUser: createdUser })
-        console.log(createdUser)
+
     }
 
     createUser = (e) => {
         e.preventDefault()
-        axios.post('/', {
-            name: this.state.newUser.name,
-            memberSince: this.state.newUser.memberSince,
-            email: this.state.newUser.email
-        }).then(res => {
-            const userList = [...this.state.users]
-            userList.push(res.data)
-            this.setState({
-                newUser: {
-                    name: '',
-                    memberSince: '',
-                    email: ''
-                },
-                users: userList
+        axios
+            .post('/user', {
+                name: this.state.newUser.name,
+                memberSince: this.state.newUser.memberSince,
+                email: this.state.newUser.email
+            }).then(res => {
+                const userList = [...this.state.users]
+                userList.push(res.data)
+                this.setState({
+                    newUser: {
+                        name: '',
+                        memberSince: '',
+                        email: ''
+                    },
+                    users: userList
+                })
             })
-        })
     }
 
     render() {
@@ -68,9 +74,9 @@ class Users extends Component {
                         </div>
                         <div>
                             <label htmlFor='memberSince'>Date: </label>
-                            <input id='memberSince' type='date' name='memberSince' 
+                            <input id='memberSince' type='date' name='memberSince'
                                 onChange={this.handleChange}
-                                value={this.state.newUser.memberSince}/>
+                                value={this.state.newUser.memberSince} />
                         </div>
                         <div>
                             <label htmlFor='email'>Email: </label>
@@ -85,6 +91,7 @@ class Users extends Component {
                             <input type='submit' value='Submit' />
                         </div>
                     </form>
+                    
                 }
             </div>
         )
