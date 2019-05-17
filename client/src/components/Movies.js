@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import React, { Component } from 'react';
 import axios from 'axios'
-
+import AddMovie from './AddMovie.js'
 class Movies extends Component {
     state = {
         movies: [],
@@ -10,11 +10,18 @@ class Movies extends Component {
             director: '',
             genre: '',
             releaseDate: ''
-        }
+        },
+        isFormDisplayed:false
     }
     componentDidMount = () => {
         axios.get(`/user/${this.key}`).then(res => {
             this.setState({ movies: res.data });
+        })
+    }
+
+    toggleForm = () => {
+        this.setState((state, props) => {
+            return ({ isFormDisplayed: !state.isFormDisplayed })
         })
     }
 
@@ -43,6 +50,7 @@ class Movies extends Component {
                     genre: '',
                     releaseDate: ''
                 },
+                isFormDisplayed:false,
                 movies: movieList
             })
         })
@@ -63,47 +71,15 @@ class Movies extends Component {
                         )
                     })
                 }
-                <h3>---------------</h3>
-                <h3>Add Movie</h3>
+                
+                <button onClick={this.toggleForm} className="buttonClass">Add Movie</button>
                 {
-                    <form onSubmit={this.createMovie}>
-                        <div>
-                            <label htmlFor='title'>Title: </label>
-                            <input id='title' type='text'
-                                name='title'
-                                placeholder='Title'
-                                onChange={this.handleChange}
-                                value={this.state.newMovie.title} />
-                        </div>
-                        <div>
-                            <label htmlFor='director'>Director: </label>
-                            <input id='director' type='text'
-                                name='director'
-                                placeholder='Director'
-                                onChange={this.handleChange}
-                                value={this.state.newMovie.director} />
-                        </div>
-                        <div>
-                            <label htmlFor='genre'>Genre: </label>
-                            <input id='genre' type='text'
-                                name='genre'
-                                placeholder='Genre'
-                                onChange={this.handleChange}
-                                value={this.state.newMovie.genre} />
-                        </div>
-                        <div>
-                            <label htmlFor='releaseDate'>Date: </label>
-                            <input id='releaseDate' type='date' name='releaseDate'
-                                onChange={this.handleChange}
-                                value={this.state.newMovie.releaseDate} />
-                        </div>
-                        <br />
-                        <div>
-                            <input type='submit' value='Submit' />
-                        </div>
-                    </form>
+                    this.state.isFormDisplayed
+                        ?
+                        <AddMovie newMovie={this.state.newMovie} handleChange={this.handleChange} createMovie={this.createMovie} />
+                        : null
                 }
-                <h3>--------------</h3>
+                <hr/>
 
             </div>
         )
