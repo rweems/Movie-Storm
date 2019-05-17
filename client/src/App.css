@@ -29,6 +29,10 @@
   flex-flow: column;
   flex-wrap: wrap;
 }
+.linkTo {
+  padding-left: 20px; 
+}
+
 h1{
   text-align: center;
   color:#2A3132;

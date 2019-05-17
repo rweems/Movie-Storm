@@ -2,13 +2,13 @@ const Movie = require('../models/Movie.js')
 
 const MovieController = {
     index:(req,res) => {
-        Movie.find({}).then(movies => {
-            res.send(movies)
+        Movie.find().then(movies => {
+            res.json(movies)
         }).catch(err => console.log(err))
     },
     show:(req,res) => {
         Movie.findById(req.params.id).then(movie => {
-            res.send(movie)
+            res.json(movie)
         }).catch(err => console.log(err))
     },
     create: (req, res) => {
