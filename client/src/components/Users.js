@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-
+import AddUser from './AddUser'
 class Users extends Component {
     state = {
         users: [],
@@ -62,37 +62,7 @@ class Users extends Component {
                     })
                 }
                 <h3>Add User</h3>
-                {
-                    <form onSubmit={this.createUser}>
-                        <div>
-                            <label htmlFor='name'>Name: </label>
-                            <input id='name' type='text'
-                                name='name'
-                                placeholder='Name'
-                                onChange={this.handleChange}
-                                value={this.state.newUser.name} />
-                        </div>
-                        <div>
-                            <label htmlFor='memberSince'>Date: </label>
-                            <input id='memberSince' type='date' name='memberSince'
-                                onChange={this.handleChange}
-                                value={this.state.newUser.memberSince} />
-                        </div>
-                        <div>
-                            <label htmlFor='email'>Email: </label>
-                            <input id='email' type='text'
-                                name='email'
-                                placeholder='Email'
-                                onChange={this.handleChange}
-                                value={this.state.newUser.email} />
-                        </div>
-                        <br />
-                        <div>
-                            <input type='submit' value='Submit' />
-                        </div>
-                    </form>
-                    
-                }
+                <AddUser newUser={this.state.newUser} handleChange={this.handleChange} createUser ={this.createUser}g/>
             </div>
         )
     }
