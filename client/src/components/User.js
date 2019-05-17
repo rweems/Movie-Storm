@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom'
+import Movies from './Movies'
 import axios from 'axios'
 
 class User extends Component {
@@ -35,6 +36,10 @@ class User extends Component {
         return (
             <div>
                 <h1>User</h1>
+                <Movies />
+                <br />
+                <br />
+                <h2>Update User</h2>
                 <form onSubmit={this.updateUser}>
                     <div>
                         <label htmlFor='name'>Name: </label>
