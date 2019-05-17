@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from 'react-router-dom'
+
 import Movies from './Movies'
 import axios from 'axios'
 
@@ -29,7 +29,7 @@ class User extends Component {
     }
     deleteUser = () => {
         axios.delete(`/user/${this.props.match.params.id}/delete`).then(res => {
-            res.redirect('/')
+            res.locaction('back')
         })
     }
     render() {

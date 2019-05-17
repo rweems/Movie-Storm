@@ -12,6 +12,12 @@ class Movies extends Component {
             releaseDate: ''
         }
     }
+    componentDidMount = () => {
+        axios.get(`/user/${this.key}`).then(res => {
+            this.setState({ movies: res.data });
+        })
+    }
+
     handleChange = (e) => {
         const createdMovie = { ...this.state.newMovie }
         createdMovie[e.target.name] = e.target.value
@@ -21,17 +27,17 @@ class Movies extends Component {
 
     createMovie = (e) => {
         e.preventDefault()
-        axios.post('/', { //userId
+        axios.post(`/user/${this.key}`, { //userId
             title: this.state.newMovie.title,
             director: this.state.newMovie.director,
             genre: this.state.newMovie.genre,
             releaseDate: this.state.newMovie.releaseDate,
-            
+
         }).then(res => {
             const movieList = [...this.state.movies]
             movieList.push(res.data)
             this.setState({
-                 newMovie: {
+                newMovie: {
                     title: '',
                     director: '',
                     genre: '',
@@ -46,7 +52,17 @@ class Movies extends Component {
         return (
             <div>
                 <h2>User Movies</h2>
-
+                {
+                    this.state.movies.map(movie => {
+                        return (
+                            <div key={movie._id} >
+                                <Link to={`/user/${this.key}/movie/${movie._id}`}>
+                                    {movie.name}
+                                </Link>
+                            </div>
+                        )
+                    })
+                }
                 <h3>---------------</h3>
                 <h3>Add Movie</h3>
                 {
@@ -77,9 +93,9 @@ class Movies extends Component {
                         </div>
                         <div>
                             <label htmlFor='releaseDate'>Date: </label>
-                            <input id='releaseDate' type='date' name='releaseDate' 
+                            <input id='releaseDate' type='date' name='releaseDate'
                                 onChange={this.handleChange}
-                                value={this.state.newMovie.releaseDate}/>
+                                value={this.state.newMovie.releaseDate} />
                         </div>
                         <br />
                         <div>
