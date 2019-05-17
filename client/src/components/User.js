@@ -20,7 +20,7 @@ class User extends Component {
 
     updateUser = (e) => {
         e.preventDefault()
-        axios.put(`/${this.props.match.params.id}`, {
+        axios.put(`/user/${this.props.match.params.id}`, {
             name: this.state.user.name,
             email: this.state.user.email
         }).then(res => {
@@ -28,14 +28,14 @@ class User extends Component {
         })
     }
     deleteUser = () => {
-        axios.delete(`/${this.props.match.params.id}`).then(res => {
-            res.Redirect('/')
+        axios.delete(`/user/${this.props.match.params.id}/delete`).then(res => {
+            res.redirect('/')
         })
     }
     render() {
         return (
             <div>
-                <h1>User</h1>
+                <h1>User{this.props.name}</h1>
                 <Movies />
                 <br />
                 <br />
