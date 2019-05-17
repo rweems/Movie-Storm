@@ -33,6 +33,10 @@
   padding-left: 20px; 
 }
 
+.buttonClass {
+  margin:10px 20px;
+}
+
 h1{
   text-align: center;
   color:#2A3132;
