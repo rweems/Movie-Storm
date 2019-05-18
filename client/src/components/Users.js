@@ -70,7 +70,7 @@ class Users extends Component {
                     })
                 }
 
-                <button onClick={this.toggleForm} className="buttonClass">New User</button>
+                <button onClick={this.toggleForm} className="buttonClass">New User?</button>
                 {
                     this.state.isFormDisplayed
                         ?

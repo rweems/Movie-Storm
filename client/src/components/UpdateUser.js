@@ -27,7 +27,7 @@ class UpdateUser extends Component {
                             value={this.props.user.email} />
                     </div>
                     <br />
-                    <button>Update</button>
+                    <input type='submit' value='Update' />
                 </form>
           );
     }

@@ -30,6 +30,7 @@ class User extends Component {
         e.preventDefault()
         axios.put(`/user/${this.props.match.params.id}`, {
             name: this.state.user.name,
+            memberSince: this.state.user.memberSince,
             email: this.state.user.email
         }).then(res => {
             this.setState({ user: res.data })
@@ -47,13 +48,36 @@ class User extends Component {
                 <Movies />
 
                 <br />
-                
-                <button onClick={this.toggleForm} className="buttonClass">Update User</button>
+
+                <button onClick={this.toggleForm} className="buttonClass">Update User?</button>
                 {
                     this.state.isFormDisplayed
                         ?
-                        <UpdateUser user={this.state.user} handleChange={this.handleChange} updateUser={this.state.updateUser} />
-                        : null
+                        <form onSubmit={this.updateUser}>
+                            <div>
+                                <label htmlFor='name'>Name: </label>
+                                <input id='name' type='text'
+                                    name='name' onChange={this.handleChange}
+                                    value={this.state.user.name}
+                                    placeholder='Name' />
+                            </div>
+                            <div>
+                                <label htmlFor='memberSince'>Date: </label>
+                                <input id='memberSince' type='date' name='memberSince'
+                                    onChange={this.handleChange}
+                                    value={this.state.user.memberSince} />
+                            </div>
+                            <div>
+                                <label htmlFor='email'>Email: </label>
+                                <input id='email' type='text'
+                                    name='email'
+                                    placeholder='Email'
+                                    onChange={this.handleChange}
+                                    value={this.state.user.email} />
+                            </div>
+                            <br />
+                            <input type='submit' value='Update' />
+                        </form> : null
                 }
 
                 <div className='form'>

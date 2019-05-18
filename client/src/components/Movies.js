@@ -72,7 +72,7 @@ class Movies extends Component {
                     })
                 }
                 
-                <button onClick={this.toggleForm} className="buttonClass">Add Movie</button>
+                <button onClick={this.toggleForm} className="buttonClass">Add Movie?</button>
                 {
                     this.state.isFormDisplayed
                         ?
