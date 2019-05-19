@@ -12,9 +12,11 @@ App: [App](https://movie-storm.herokuapp.com/)
 [Trello](https://trello.com/b/sCAzrpbV/movie-storm)
 
 
-![whiteboarding](movie-storm.JPG)
+Whiteboarding
+![whiteboarding](movie-storm.png)
 
 
+ERD
 ![ERD](user-movie.png)
 
 
