@@ -6,9 +6,17 @@ Using the technology listed below, I created an app to keep track of movies bein
 
 
 
+App: [App](https://movie-storm.herokuapp.com/)
+
+
 [Trello](https://trello.com/b/sCAzrpbV/movie-storm)
 
-[App](https://movie-storm.herokuapp.com/)
+
+![whiteboarding](movie-storm.JPG)
+
+
+![ERD](user-movie.png)
+
 
 ### Technology Used
 
