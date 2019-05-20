@@ -28,7 +28,7 @@ class Movie extends Component {
      
     updateMovie = (e) => {
         e.preventDefault()
-        axios.put(`/movies/${this.props.match.params.id}`, {
+        axios.put(`/movie/${this.props.match.params.id}`, {
             title: this.state.movie.title,
             director: this.state.movie.director,
             genre: this.state.movie.genre,
@@ -37,8 +37,9 @@ class Movie extends Component {
             this.setState({ movie: res.data })
         })
     }
+
     deleteMovie = () => {
-        axios.delete(`/movies/${this.props.match.params.id}/delete`).then(res => {
+        axios.delete(`/movie/${this.props.match.params.id}/delete`).then(res => {
             res.locaction('back')
         })
     }
@@ -46,6 +47,8 @@ class Movie extends Component {
     render() { 
         return ( 
             <div>
+                <br />
+                
                 <button onClick={this.toggleForm} className="buttonClass">Update movie?</button>
                 {
                     this.state.isFormDisplayed

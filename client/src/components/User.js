@@ -45,8 +45,6 @@ class User extends Component {
         return (
             <div>
 
-                <Movies />
-                {this.props.key}
                 <br />
 
                 <button onClick={this.toggleForm} className="buttonClass">Update User?</button>
