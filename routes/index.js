@@ -13,11 +13,11 @@ router.put('/user/:id', UserController.update)
 router.delete('/user/:id/delete', UserController.delete)
 
 //movie controller
-router.get('/user/:userId', MovieController.index)
-router.post('/user/:userId', MovieController.create)
-router.get('/user/:userId/movie/:id', MovieController.show)
-router.put('/user/:userId/movie/:id', MovieController.update)
-router.delete('/user/:userId/movie/:id/delete', MovieController.delete)
+router.get('/movie', MovieController.index)
+router.post('/movie', MovieController.create)
+router.get('/movie/:id', MovieController.show)
+router.put('/movie/:id', MovieController.update)
+router.delete('/movie/:id/delete', MovieController.delete)
 
 
 
