@@ -1,7 +1,8 @@
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import axios from 'axios'
-import AddMovie from './AddMovie.js'
+import AddMovie from './AddMovie'
+
 class Movies extends Component {
     state = {
         movies: [],
@@ -11,10 +12,11 @@ class Movies extends Component {
             genre: '',
             releaseDate: ''
         },
-        isFormDisplayed:false
+        isFormDisplayed: false
     }
+
     componentDidMount = () => {
-        axios.get(`/user/${this.key}`).then(res => {
+        axios.get('/movie').then(res => {
             this.setState({ movies: res.data });
         })
     }
@@ -34,44 +36,44 @@ class Movies extends Component {
 
     createMovie = (e) => {
         e.preventDefault()
-        axios.post(`/user/${this.key}`, { //userId
-            title: this.state.newMovie.title,
-            director: this.state.newMovie.director,
-            genre: this.state.newMovie.genre,
-            releaseDate: this.state.newMovie.releaseDate,
-
-        }).then(res => {
-            const movieList = [...this.state.movies]
-            movieList.push(res.data)
-            this.setState({
-                newMovie: {
-                    title: '',
-                    director: '',
-                    genre: '',
-                    releaseDate: ''
-                },
-                isFormDisplayed:false,
-                movies: movieList
+        axios
+            .post('/movie', {
+                title: this.state.newMovie.title,
+                director: this.state.newMovie.director,
+                genre: this.state.newMovie.genre,
+                releaseDate: this.state.newMovie.releaseDate,
+            }).then(res => {
+                const movieList = [...this.state.movies]
+                movieList.push(res.data)
+                this.setState({
+                    newMovie: {
+                        title: '',
+                        director: '',
+                        genre: '',
+                        releaseDate: ''
+                    },
+                    isFormDisplayed: false,
+                    movies: movieList
+                })
             })
-        })
     }
 
     render() {
         return (
             <div>
-                <h2>User Movies</h2>
+                <h1>Movies</h1>
                 {
-                    this.state.movies.map(movie => {
+                    this.state.movies.map((movie) => {
                         return (
-                            <div key={movie._id} >
-                                <Link to={`/user/${this.key}/movie/${movie._id}`}>
-                                    {movie.name}
+                            <div key={movie._id} className="linkTo">
+                                <Link to={`/movie/${movie._id}`}>
+                                    {movie.title}
                                 </Link>
                             </div>
                         )
                     })
                 }
-                
+
                 <button onClick={this.toggleForm} className="buttonClass">Add Movie?</button>
                 {
                     this.state.isFormDisplayed
@@ -79,8 +81,6 @@ class Movies extends Component {
                         <AddMovie newMovie={this.state.newMovie} handleChange={this.handleChange} createMovie={this.createMovie} />
                         : null
                 }
-                <hr/>
-
             </div>
         )
     }
