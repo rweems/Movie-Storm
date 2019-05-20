@@ -7,27 +7,27 @@ const MovieController = {
         }).catch(err => console.log(err))
     },
     show:(req,res) => {
-        Movie.findById(req.params.id).then(movie => {
+        Movie.findById(req.params.id).then((movie) => {
             res.json(movie)
         }).catch(err => console.log(err))
     },
     create: (req, res) => {
-        const newMovie = req.body
-        Movie.create(newMovie)
-         .then(() => {
-             res.json(newMovie) //go to userId
+        
+        Movie.create(req.body)
+         .then((newMovie) => {
+             res.json(newMovie) 
          }).catch(err => console.log(err))
      },
      update:(req,res) => {
          Movie.findByIdAndUpdate(req.params.id,req.body,{new: true})
          .then((updatedMovie) => {
-             res.json(updatedMovie)// go to userId
+             res.json(updatedMovie)
          }).catch(err => console.log(err))
      },
      delete: (req,res)=>{
          Movie.findByIdAndRemove(req.params.id)
          .then(()=> {
-             res.redirect('/') // go to userId
+             res.redirect('/')
          }).catch(err => console.log(err)
              
          )
