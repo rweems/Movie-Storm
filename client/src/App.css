@@ -42,6 +42,13 @@ h1{
   color:#2A3132;
 }
 
+.heading{
+  display: flex;
+  flex-direction: column;
+  font-family: 'Acme', sans-serif;
+  color: #763626;
+}
+
 .form, form, h3, p{
   padding: 0px 20px;
 }
