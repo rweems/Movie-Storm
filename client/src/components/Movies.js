@@ -66,7 +66,7 @@ class Movies extends Component {
                     this.state.movies.map((movie) => {
                         return (
                             <div key={movie._id} className="linkTo">
-                                <Link to={`/movie/${movie._id}`} style={{paddingTop:'5px'}}>
+                                <Link to={`/movie/${movie._id}`} style={{paddingTop:'10px'}}>
                                     {movie.title}
                                 </Link>
                             </div>
