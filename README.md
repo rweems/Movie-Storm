@@ -1,5 +1,5 @@
 
-# Movie Storm
+# Movie Storm - Project 3 for General Assembly(Atlanta)
 
 
 Using the technology listed below, I created an app to keep track of movies being rented by a user. This app allows you to view the movies rented, the user who rented the movie as well as some information about the user and the movie. 
